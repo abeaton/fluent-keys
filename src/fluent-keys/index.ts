@@ -74,6 +74,9 @@ export class Key {
 		escape: Key.matches("Escape"),
 		letter: Key.meets(/[a-zA-Z]/),
 		space: Key.matches(" "),
+		symbol: Key.meets(/[\W\S]/),
+		backspace: Key.matches("Backspace"),
+		delete: Key.matches("Delete"),
 		lowercase: {
 			letter: Key.meets(/[a-z]/),
 		},

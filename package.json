@@ -1,0 +1,34 @@
+{
+  "name": "fluent-keydown",
+  "version": "1.0.0",
+  "description": "A simple, fluent library for handling onKeyDown",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abeaton/fluent-keydown.git"
+  },
+  "keywords": [
+    "fluent",
+    "react",
+    "onKeyDown"
+  ],
+  "author": "Adam Beaton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abeaton/fluent-keydown/issues"
+  },
+  "homepage": "https://github.com/abeaton/fluent-keydown#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^26.0.4",
+    "@types/react": "^16.9.43",
+    "jest": "^26.1.0",
+    "react": "^16.13.1",
+    "ts-jest": "^26.1.3",
+    "typescript": "^3.9.7"
+  }
+}

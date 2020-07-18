@@ -43,11 +43,11 @@ render() {
 | `Key.is.letter.then(...)` | For any letter (capital or lowercase), invoke function |
 | `Key.is.lowercase.letter.then(...)` | Lowercase letters |
 | `Key.is.uppercase.letter.then(...)` | Uppercase letters |
-| `Key.matches('F').then(...) | Can match any single character |
-| `Key.matches('{', '[', '(').then(...) | Can match any character in list of characters |
-| `Key.is.space.then(...) | Space bar |
-| `Key.is.symbol.then(...) | uses /[\W\S]/ regex |
-| `Key.meets(/[1-5]/).then(...) | can define arbitrary regex | 
+| `Key.matches('F').then(...)` | Can match any single character |
+| `Key.matches('{', '[', '(').then(...)` | Can match any character in list of characters |
+| `Key.is.space.then(...)` | Space bar |
+| `Key.is.symbol.then(...)` | uses /[\W\S]/ regex |
+| `Key.meets(/[1-5]/).then(...)` | can define arbitrary regex | 
 
 ## Some alternatives
 

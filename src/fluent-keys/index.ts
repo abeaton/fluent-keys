@@ -18,7 +18,7 @@ export class Key {
 	static readonly meets = (regexp: RegExp): Then => {
 		return {
 			then: (outcome: NullaryFunction) => {
-				return (event: React.KeyboardEvent) => {
+				return (event: ConstrainedKeyboardEvent) => {
 					if (regexp.test(event.key)) {
 						outcome();
 					}
@@ -30,7 +30,7 @@ export class Key {
 	private static ctrl(next: Then): Then {
 		return {
 			then: (outcome: NullaryFunction) => {
-				return (event: React.KeyboardEvent) => {
+				return (event: ConstrainedKeyboardEvent) => {
 					if (event.ctrlKey) {
 						const toPropogate = next.then(outcome);
 
@@ -44,22 +44,8 @@ export class Key {
 	private static alt(next: Then): Then {
 		return {
 			then: (outcome: NullaryFunction) => {
-				return (event: React.KeyboardEvent) => {
+				return (event: ConstrainedKeyboardEvent) => {
 					if (event.ctrlKey) {
-						const toPropogate = next.then(outcome);
-
-						toPropogate(event);
-					}
-				};
-			}
-		};
-	}
-
-	private static shift(next: Then): Then {
-		return {
-			then: (outcome: NullaryFunction) => {
-				return (event: React.KeyboardEvent) => {
-					if (event.shiftKey) {
 						const toPropogate = next.then(outcome);
 
 						toPropogate(event);
@@ -72,20 +58,19 @@ export class Key {
 	static readonly is = {
 		enter: Key.matches("Enter"),
 		escape: Key.matches("Escape"),
-		letter: Key.meets(/[a-zA-Z]/),
+		letter: Key.meets(/^[a-zA-Z]{1}$/),
 		space: Key.matches(" "),
-		symbol: Key.meets(/[\W\S]/),
 		backspace: Key.matches("Backspace"),
 		delete: Key.matches("Delete"),
 		lowercase: {
-			letter: Key.meets(/[a-z]/),
+			letter: Key.meets(/^[a-z]{1}$/),
 		},
 		uppercase: {
-			letter: Key.meets(/[A-Z]/),
+			letter: Key.meets(/^[A-Z]{1}$/),
 		},
-		numeral: Key.meets(new RegExp(/[0-9]/)),
-		number: Key.meets(new RegExp(/[0-9]/)),
-		alphanumeric: Key.meets(/[a-zA-Z0-9]/),
+		numeral: Key.meets(new RegExp(/^[0-9]{1}$/)),
+		number: Key.meets(new RegExp(/^[0-9]{1}$/)),
+		alphanumeric: Key.meets(/^[a-zA-Z0-9]{1}$/),
 		ctrl: {
 			meets: (regexp: RegExp) => Key.ctrl(Key.meets(regexp)),
 			and: (...keys: string[]) => Key.ctrl(Key.matches(...keys)),
@@ -97,18 +82,6 @@ export class Key {
 				plus: (...keys: string[]) => Key.ctrl(Key.alt(Key.matches(...keys))),
 				matches: (...keys: string[]) => Key.ctrl(Key.alt(Key.matches(...keys))),
 			},
-			shift: {
-				meets: (regexp: RegExp) => Key.ctrl(Key.shift(Key.meets(regexp))),
-				and: (...keys: string[]) => Key.ctrl(Key.shift(Key.matches(...keys))),
-				plus: (...keys: string[]) => Key.ctrl(Key.shift(Key.matches(...keys))),
-				matches: (...keys: string[]) => Key.ctrl(Key.shift(Key.matches(...keys))),
-			},
 		},
-		shift: {
-			meets: (regexp: RegExp) => Key.shift(Key.meets(regexp)),
-			and: (...keys: string[]) => Key.shift(Key.matches(...keys)),
-			plus: (...keys: string[]) => Key.shift(Key.matches(...keys)),
-			matches: (...keys: string[]) => Key.shift(Key.matches(...keys)),
-		}
 	}
 }

@@ -46,8 +46,7 @@ render() {
 | `Key.matches('F').then(...)` | Can match any single character |
 | `Key.matches('{', '[', '(').then(...)` | Can match any character in list of characters |
 | `Key.is.space.then(...)` | Space bar |
-| `Key.is.symbol.then(...)` | uses /[\W\S]/ regex |
-| `Key.meets(/[1-5]/).then(...)` | can define arbitrary regex | 
+| `Key.meets(/^[1-5]{1}$/).then(...)` | can define arbitrary regex | 
 
 ## Some alternatives
 
@@ -60,4 +59,3 @@ Fluent-keys is a good choice for many use cases. That said, consider these other
 
 * I recommend trying out this library and seeing if it works well for you
 * TODO: I haven't tested out how performant this library is
-* TODO: I still need to publish as an NPM package

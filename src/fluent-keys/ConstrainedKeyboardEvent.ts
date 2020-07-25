@@ -1,6 +1,5 @@
 export interface ConstrainedKeyboardEvent {
 	key: string;
-	shiftKey: boolean;
 	ctrlKey: boolean;
 	altKey: boolean;
 }
